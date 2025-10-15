@@ -1,0 +1,23 @@
+# Ignore temporary or large data
+*.fastq
+*.fq
+*.bam
+*.sam
+*.gz
+
+# Ignore analysis outputs
+outputs/
+inputs/
+scratch/
+results/
+*.html
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore environment and logs
+.env
+*.log
+*.tmp
