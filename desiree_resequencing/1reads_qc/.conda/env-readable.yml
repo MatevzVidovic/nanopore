@@ -1,0 +1,8 @@
+name: nanopack
+channels:
+  - defaults
+dependencies:
+  - nanoplot
+  - nanoqc
+  - chopper
+prefix: /home/matevz2/miniconda3/envs/nanopack

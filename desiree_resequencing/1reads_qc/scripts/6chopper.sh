@@ -1,43 +1,4 @@
 
-input_filepath="/scratch/evakrzisnik/desiree_resequencing/reads_qc/inputs/library2.fastq"
-
-
-output_base="/DKED/scratch/evakrzisnik/desiree_resequencing/reads_qc/outputs"
-
-#nanoqc
-subfolder="nanoqc"
-output_path="$output_base"/"$subfolder"
-nanoQC "$input_filepath" -o "$output_path"
-
-
-#nanoget
-#subfolder="nanoget"
-#output_path="$output_base"/"$subfolder"
-#NanoGet --fastq "$input_filepath" > "${output_path}/nanoget_summary.txt"
-#nanoget ni tool, ampak library, tako da ga ne morem klicat
-
-#nanoplot
-subfolder="nanoplot"
-output_path="$output_base"/"$subfolder"
-NanoPlot --fastq "$input_filepath" -o "$output_path"
-
-#stari ont reads, primerjava z nanocomp
-#najprej qc in plot se s temi fajli
-#lokacija starih timovih readov
-#/scratch/timg/desiree_seq/input/ont/desiree_ont_raw.fastq
-
-#napravili softlink v mojem filesystemu
-oldreads_filepath="/scratch/timg/desiree_seq/input/ont/desiree_ont_raw.fastq"
-output_base="/scratch/evakrzisnik/desiree_resequencing/reads_qc/outputs"
-
-#za stare reade bomo izvedli enake analize kot za moje
-subfolder="nanoqc_oldreads"
-output_path="$output_base"/"$subfolder"
-nanoQC "$oldreads_filepath" -o "$output_path"
-
-subfolder="nanoplot_oldreads"
-output_path="$output_base"/"$subfolder"
-NanoPlot --fastq "$oldreads_filepath" -o "$output_path"
 
 
 #za moje reade bomo porezali prvih 20 bp in zadnjih 5 zaradi quality scorea 
