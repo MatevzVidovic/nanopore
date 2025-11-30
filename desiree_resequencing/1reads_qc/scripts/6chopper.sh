@@ -6,7 +6,11 @@
 #bomo dodali še minscore 10 
 #zbriši vse kar je do zdaj chopped in se enkrat pozeni vse skupaj s scorom
 #nanocomp primerjava starih readov in teh chopped
-input_filepath="/scratch/evakrzisnik/desiree_resequencing/reads_qc/inputs/library2.fastq"
+input_filepath="./inputs/library2.fastq"
+chopper_files=$(pwd)"/outputs/chopper/library2.fixedcrop_h20_t5_q10.fastq"
+final_output_base="./outputs"
+
+mkdir -p $(pwd)"/outputs/chopper"
 
 chopper \
   --trim-approach fixed-crop \
@@ -15,21 +19,20 @@ chopper \
   --tailcrop 5 \
   -t 8 \
   -i $input_filepath \
-  > /scratch/evakrzisnik/desiree_resequencing/reads_qc/outputs/chopper/library2.fixedcrop_h20_t5_q10.fastq
+  > $chopper_files
 
 #zdaj pa pripravimo report se iz teh, chopanih sekvenc
-input_filepath="/scratch/evakrzisnik/desiree_resequencing/reads_qc/outputs/chopper/library2.fixedcrop_h20_t5_q10.fastq"
-output_base="/scratch/evakrzisnik/desiree_resequencing/reads_qc/outputs"
 
 #za chopane reade bomo izvedli enake analize kot za moje
 #predvsem nas zanima nanoqc diverziteta baz
 subfolder="nanoqc_chopped"
-output_path="$output_base"/"$subfolder"
-nanoQC "$input_filepath" -o "$output_path"
+output_path="$final_output_base"/"$subfolder"
+# mkdir -p $output_path
+nanoQC "$chopper_files" -o "$output_path"
 
 subfolder="nanoplot_chopped"
-output_path="$output_base"/"$subfolder"
-NanoPlot --fastq "$input_filepath" -o "$output_path"
+output_path="$final_output_base"/"$subfolder"
+NanoPlot --fastq "$chopper_files" -o "$output_path"
 
 #
 

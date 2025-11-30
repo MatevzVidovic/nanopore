@@ -5,7 +5,7 @@
 
 #napravili softlink v mojem filesystemu
 oldreads_filepath="/scratch/timg/desiree_seq/input/ont/desiree_ont_raw.fastq"
-output_base="/scratch/evakrzisnik/desiree_resequencing/reads_qc/outputs"
+output_base=$(pwd)"/outputs"
 
 #za stare reade bomo izvedli enake analize kot za moje
 subfolder="nanoqc_oldreads"
