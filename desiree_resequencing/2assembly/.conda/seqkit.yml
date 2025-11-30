@@ -1,0 +1,7 @@
+name: seqkit
+channels:
+  - bioconda
+  - defaults
+dependencies:
+  - seqkit=2.11.0=he881be0_0
+prefix: /home/matevz2/miniconda3/envs/seqkit
